@@ -1,13 +1,13 @@
 - name: IDS
-  path: ~/IDS
+  path: /mnt/d/jiriv/Documents/IDS
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
-  start: 2021-02-02 10:00:00
+  start: 2021-02-09 10:00:00
   duration: 3h
   period: 168h
   count: 13
 
 - name: SUR
-  path: ~/SUR
+  path: /mnt/d/jiriv/Documents/SUR
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
   start: 2021-02-09 17:00:00
   duration: 3h
