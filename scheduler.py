@@ -62,7 +62,8 @@ for subject in config:
         os.mkdir(path)
     while start <= now and count > 0:
         if(not(name in downloaded and start in downloaded[name])):
-            res = downloadVideo(playlist, start, end, f"{name}-{start}", path)
+            res = downloadVideo(playlist, start, end,
+                                f"{name}_{start.strftime('%-d.%-m.%Y')}", path)
             if res == 0:
                 print("Download was succesful.")
                 if name not in downloaded:
