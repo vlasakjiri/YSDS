@@ -2,7 +2,7 @@
   path: ~/IDS
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
   start: 09.02.2021 10:00:00
-  duration: 3h
+  end: 09.02.2021 13:00:00
   period: 168h
   count: 13
 
@@ -10,6 +10,6 @@
   path: ~/SUR
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
   start: 09.02.2021 17:00:00
-  duration: 3h
+  end: 09.02.2021 20:00:00
   period: 168h
   count: 13
