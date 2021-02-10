@@ -4,20 +4,21 @@ from dateutil.parser import parse
 from pytimeparse.timeparse import timeparse
 
 
-with open("config.yaml", 'r') as stream:
-    try:
-        config = yaml.safe_load(stream)
+def parseYaml(path):
+    with open(path, 'r') as stream:
+        try:
+            return yaml.safe_load(stream)
 
-    except yaml.YAMLError as exc:
-        print(exc)
+        except yaml.YAMLError as exc:
+            print(exc)
 
-with open("downloaded.yaml", 'r') as stream:
-    try:
-        downloaded = yaml.safe_load(stream)
 
-    except yaml.YAMLError as exc:
-        print(exc)
+def downloadVideo(playlist, start, end, filename, path):
+    print(f"Downloading {filename} to {path}")
 
+
+config = parseYaml("config.yaml")
+downloaded = parseYaml("downloaded.yaml")
 now = datetime.datetime.now()
 for subject in config:
     name = subject["name"]
@@ -27,10 +28,10 @@ for subject in config:
     end = start + datetime.timedelta(0, duration)
     count = subject["count"]
     path = subject["path"]
-
+    playlist = subject["playlist"]
     while start <= now and count > 0:
         if(not(name in downloaded and start in downloaded[name])):
-            print(f"Downloading {name} {start} to {path}")
+            downloadVideo(playlist, start, end, f"{name}-{start}", path)
         start += period
         end += period
         count -= 1
