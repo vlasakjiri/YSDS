@@ -11,8 +11,13 @@ with open("config.yaml", 'r') as stream:
     except yaml.YAMLError as exc:
         print(exc)
 
+with open("downloaded.yaml", 'r') as stream:
+    try:
+        downloaded = yaml.safe_load(stream)
 
-print(config)
+    except yaml.YAMLError as exc:
+        print(exc)
+
 now = datetime.datetime.now()
 for subject in config:
     name = subject["name"]
@@ -24,7 +29,8 @@ for subject in config:
     path = subject["path"]
 
     while start <= now and count > 0:
-        print(f"Downloading {name} {start} to {path}")
+        if(not(name in downloaded and start in downloaded[name])):
+            print(f"Downloading {name} {start} to {path}")
         start += period
         end += period
         count -= 1

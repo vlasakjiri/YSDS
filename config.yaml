@@ -4,7 +4,7 @@
   start: 2021-02-02 10:00:00
   duration: 3h
   period: 168h
-  count: 1
+  count: 13
 
 - name: SUR
   path: ~/SUR
