@@ -7,7 +7,8 @@ This will start downloading pending downloads if there are any. It is best to ru
 ```bash
 python ./scheduler.py
 ```
-
+## Instalation
+Download and unpack this repository then install dependencies with `pip install -r requirements.txt`
 
 ## Configuration
 Use the `config.yaml` file to define your downloads.
