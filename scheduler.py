@@ -60,7 +60,7 @@ for subject in config:
     if not os.path.exists(path):
         print(f"Path {path} does not exist. Creating it now...")
         os.mkdir(path)
-    while start <= now and count > 0:
+    while end <= now and count > 0:
         if(not(name in downloaded and start in downloaded[name])):
             res = downloadVideo(playlist, start, end,
                                 f"{name}_{start.strftime('%-d.%-m.%Y_%H%M')}", path)
