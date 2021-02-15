@@ -62,12 +62,14 @@ for subject in config:
     count = subject["count"]
     path = subject["path"]
     playlist = subject["playlist"]
+    no_older_than = datetime.timedelta(
+        0, timeparse(subject.get("no_older_than"))) if "no_older_than" in subject else None
 
     if not os.path.exists(path):
         print(f"Path {path} does not exist. Creating it now...")
         os.mkdir(path)
     while end <= now and count > 0:
-        if(not(name in downloaded and start in downloaded[name])):
+        if(not(name in downloaded and start in downloaded[name]) and (no_older_than is None or now - start <= no_older_than)):
             filename = f"{name}_{start.strftime('%-d.%-m.%Y_%H%M')}"
             print(f"Downloading {filename} into {path}")
             appendToYaml(downloaded, name, start)
