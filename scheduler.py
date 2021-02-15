@@ -40,7 +40,7 @@ def downloadVideo(playlist, start, end, filename, path):
     startStr = start.strftime(dateformat)
     endStr = end.strftime(dateformat)
     process = subprocess.run(
-        ["yt_ddl", "-s", startStr, "-e", endStr, url, "-o", filepath])
+        ["yt_ddl","-vf","1", "-s", startStr, "-e", endStr, url, "-o", filepath])
     return process.returncode
 
 
