@@ -1,10 +1,11 @@
 - name: IDS #name of the section
-  path: /mnt/d/jiriv/Documents/IDS #path to folder where streams should be downloaded
+  path: /mnt/d/jiriv/Documents/IDS #path to folder where VODs should be downloaded
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr #url of the youtube playlist
-  start: 2021-02-09 10:00:00 #timestamp with the start of the part of the stream you want to download
-  duration: 3h #duration of the part of the stream
-  period: 168h #period (after how much time should another part be downloaded)
-  count: 13 #how many parts do you want to download
+  start: 2021-02-09 10:00:00 #timestamp with the start of the VODs of the stream you want to download
+  duration: 3h #duration of the VODs
+  period: 168h #period (after how much time should another VOD be downloaded)
+  count: 13 #how many VODs do you want to download
+  no_older_than: 24h #Use this if you don't want to download VODs that are older than this value.
 
 # - name: SUR
 #   path: /share/4. semestr/SUR
