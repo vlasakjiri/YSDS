@@ -1,5 +1,5 @@
 - name: IDS                                                                             #name of the section
-  path: /share/4. semestr/IDS                                                      #path to folder where streams should be downloaded
+  path: /share/IDS                                                      #path to folder where streams should be downloaded
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr    #url of the youtube playlist
   start: 2021-02-09 10:00:00                                                            #timestamp with the start of the part of the stream you want to download
   duration: 3h                                                                          #duration of the part of the stream
@@ -9,7 +9,7 @@
 
 
 - name: SUR
-  path: /share/4. semestr/SUR
+  path: /share/SUR
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
   start: 2021-02-09 17:00:00
   duration: 3h
@@ -19,7 +19,7 @@
 
 
 - name: IPP
-  path: /share/4. semestr/IPP
+  path: /share/IPP
   playlist: https://www.youtube.com/playlist?list=PL_eb8wrKJwYuNXjVXtm_Tyh9mf5gT9Xrr
   start: 2021-02-08 08:00:00
   duration: 3h

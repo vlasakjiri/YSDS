@@ -19,18 +19,6 @@ def parseYaml(path):
             print(exc)
 
 
-def writeYaml(obj, path):
-    with open(path, 'w') as file:
-        yaml.dump(obj, file)
-
-
-def appendToYaml(obj, name, start):
-    if name not in obj:
-        obj[name] = [start]
-    else:
-        obj[name].append(start)
-
-
 def getVideoUrl(playlist):
     text = subprocess.check_output(["youtube-dl", "--dump-json", "--flat-playlist",
                                     playlist], encoding='utf-8').partition('\n')[0]
@@ -42,7 +30,7 @@ def getVideoUrl(playlist):
 def downloadVideo(playlist, start, end, filename, path):
     url = getVideoUrl(playlist)
     dateformat = "%-d.%-m.%Y %H:%M"
-    filepath = os.path.join(path, filename) + ".mp4"
+    filepath = os.path.join(path, filename)
     startStr = start.strftime(dateformat)
     endStr = end.strftime(dateformat)
     process = subprocess.run(
@@ -51,7 +39,6 @@ def downloadVideo(playlist, start, end, filename, path):
 
 
 config = parseYaml("config.yaml")
-downloaded = parseYaml("downloaded.yaml")
 now = datetime.datetime.now()
 for subject in config:
     name = subject["name"]
@@ -69,19 +56,16 @@ for subject in config:
         print(f"Path {path} does not exist. Creating it now...")
         os.mkdir(path)
     while end <= now and count > 0:
-        if(not(name in downloaded and start in downloaded[name]) and (no_older_than is None or now - start <= no_older_than)):
-            filename = f"{name}_{start.strftime('%-d.%-m.%Y_%H%M')}"
+        filename = f"{name}_{start.strftime('%-d.%-m.%Y_%H%M')}.mp4"
+        downloaded = os.listdir(path)
+        if(not(filename in downloaded) and (no_older_than is None or now - start <= no_older_than)):
             print(f"Downloading {filename} into {path}")
-            appendToYaml(downloaded, name, start)
-            writeYaml(downloaded, "downloaded.yaml")
             res = downloadVideo(playlist, start, end,
                                 filename, path)
             if res == 0:
                 print("Download was succesful.")
             else:
                 print("There was an error.")
-                downloaded[name].remove(start)
-                writeYaml(downloaded, "downloaded.yaml")
         start += period
         end += period
         count -= 1
